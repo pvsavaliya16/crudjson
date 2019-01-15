@@ -1,0 +1,50 @@
+<h2>All Students</h2>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Enrollment</th>
+    <th>Sem</th>
+    <th>Branch</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{student.name}}</td>
+    <td>{{student.eid}}</td>
+    <td>{{student.sem}}</td>
+    <td>{{student.branch}}</td>
+    <td>
+      <button class="btn-dark btn" (click)="deleteStudent(student)">Delete</button>
+    </td>
+    <td>
+      <button class="btn btn-dark" (click)="updateStudent(student)">Edit</button>
+    </td>
+  </tr>
+</table>
+<div *ngIf="editStudent">
+  <form #updateForm="ngForm" (ngSubmit)="updStudent(updateForm)">
+    
+      <div class="form-group">
+        <label for="name">Name: </label>
+        <input type="text" class="form-control" id="name" required
+        [(ngModel)]="thisStudent.name" name="name">
+      </div>
+  
+      <div class="form-group">
+        <label for="sem">Semester: </label>
+        <input type="text" class="form-control" id="sem" required
+        [(ngModel)]="thisStudent.sem" name="sem">
+      </div>
+  
+      <div class="form-group">
+        <label for="branch">Branch: </label>
+        <input type="text" class="form-control" id="branch" required
+        [(ngModel)]="thisStudent.branch" name="branch">
+      </div>
+  
+      <div>
+        <button type="submit" class="btn btn-success" >Submit</button>
+      </div>
+    
+  </form>
+</div>

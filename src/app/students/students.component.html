@@ -1,0 +1,58 @@
+ 
+<div class="container">
+  <h1>Student form</h1>
+  <form #studentform="ngForm" (ngSubmit)="onSubmit(studentform)">
+    <div class="form-group">
+      <label for="eid">Enrollment: </label>
+      <input type="text" class="form-control" id="eid" required
+      pattern="^(\d{12})" [(ngModel)]="student.eid" name="eid" #sid="ngModel">
+      <div *ngIf="sid.errors?.pattern" style="color:red">
+        Enrollment id not valid!!
+      </div>
+      
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name: </label>
+      <input type="text" class="form-control" id="name" required
+      [(ngModel)]="student.name" name="name" pattern="^[a-zA-Z ]{1,60}$" #name="ngModel">
+      <div *ngIf="name.errors?.pattern" style="color:red">
+        Name is not Valid!!
+      </div>
+      
+    </div>
+
+    <div class="form-group">
+      <label for="sem">Semester: </label>
+      <input type="text" class="form-control" id="sem" required
+      [(ngModel)]="student.sem" name="sem" pattern="^(\d{1,3})" #sem="ngModel">
+      <div *ngIf="sem.errors?.pattern" style="color:red">
+        Sem is not valid!!
+      </div>
+    </div>
+ <!-- <div class="form-group">
+      <label for="branch">Branch: </label>
+        <select id="select" class="form-control" required [(ngModel)]="student.branch" 
+        name="branch" #branch="ngModel">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+    </div>
+  -->
+    <div class="form-group">
+      <label for="branch">Branch: </label>
+      <input type="text" class="form-control" id="branch" required
+      [(ngModel)]="student.branch" name="branch" #branch="ngModel" pattern="^[A-Z]{2}$">
+      <div *ngIf="branch.errors?.pattern" style="color:red">
+        Invalid branch!!
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" id="submitbtn" class="btn btn-success" >Submit</button>
+    </div>
+  </form>
+  <div>{{studentform.value | json}}</div>
+  
+</div>
