@@ -15,7 +15,7 @@ export class DisplayComponent implements OnInit {
 
   ngOnInit() {
   }
-  deleteStudent(student: Student): void {
+  deleteStudent(student): void {
     const index = this.students.indexOf(student);
     if( window.confirm("Are you sure?")){
       this.students.splice(index, 1);
