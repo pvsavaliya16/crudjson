@@ -27,6 +27,6 @@ export class DisplayComponent implements OnInit {
   }
   updStudent(updateForm): void {
     this.thisStudent = null;
-    this.editStudent = false;
+    this.editStudent = false;//
   }
 }
