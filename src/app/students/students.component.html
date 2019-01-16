@@ -2,11 +2,11 @@
 <div class="container">
   <h1>Student form</h1>
   <form #studentform="ngForm" (ngSubmit)="onSubmit(studentform)">
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="sid.invalid && sid.touched" [class.has-success]="sid.valid">
       <label for="eid">Enrollment: </label>
       <input type="text" class="form-control" id="eid" required
       pattern="^(\d{12})" [(ngModel)]="student.eid" name="eid" #sid="ngModel">
-      <div *ngIf="sid.errors?.pattern" style="color:red">
+      <div *ngIf="(sid.errors?.pattern || sid.errors?.required) && sid.touched" style="color:red">
         Enrollment id not valid!!
       </div>
       
@@ -16,17 +16,17 @@
       <label for="name">Name: </label>
       <input type="text" class="form-control" id="name" required
       [(ngModel)]="student.name" name="name" pattern="^[a-zA-Z ]{1,60}$" #name="ngModel">
-      <div *ngIf="name.errors?.required && name.touched && name.errors?.pattern" style="color:red">
+      <div *ngIf="(name.errors?.pattern || name.errors?.required) && name.touched" style="color:red">
         Name is not Valid!!
       </div>
       
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="sem.invalid && sem.touched" [class.has-success]="sem.valid">
       <label for="sem">Semester: </label>
       <input type="text" class="form-control" id="sem" required
       [(ngModel)]="student.sem" name="sem" pattern="^(\d{1,3})" #sem="ngModel">
-      <div *ngIf="sem.errors?.pattern" style="color:red">
+      <div *ngIf="(sem.errors?.pattern || sem.errors?.required) && sem.touched" style="color:red">
         Sem is not valid!!
       </div>
     </div>
@@ -40,11 +40,11 @@
         </select>
     </div>
   -->
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="branch.invalid && branch.touched" [class.has-success]="branch.valid">
       <label for="branch">Branch: </label>
       <input type="text" class="form-control" id="branch" required
       [(ngModel)]="student.branch" name="branch" #branch="ngModel" pattern="^[A-Z]{2}$">
-      <div *ngIf="branch.errors?.pattern" style="color:red">
+      <div *ngIf="(branch.errors?.pattern || branch.errors?.required) && branch.touched" style="color:red">
         Invalid branch!!
       </div>
     </div>
