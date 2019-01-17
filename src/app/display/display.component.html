@@ -9,7 +9,7 @@
     <th></th>
   </tr>
   <tr *ngFor="let student of students">
-    <td>{{student.name}}</td>
+    <td>{{student.firstName + " " + student.lastName}}</td>
     <td>{{student.eid}}</td>
     <td>{{student.sem}}</td>
     <td>{{student.branch}}</td>
@@ -25,9 +25,15 @@
   <form #updateForm="ngForm" (ngSubmit)="updStudent(updateForm)">
     
       <div class="form-group">
-        <label for="name">Name: </label>
-        <input type="text" class="form-control" id="name" required
-        [(ngModel)]="thisStudent.name" name="name">
+        <label for="firstName">First Name: </label>
+        <input type="text" class="form-control" id="firstName" required
+        [(ngModel)]="thisStudent.firstName" name="firstName">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name: </label>
+        <input type="text" class="form-control" id="lastName" required
+        [(ngModel)]="thisStudent.lastName" name="lastName">
       </div>
   
       <div class="form-group">

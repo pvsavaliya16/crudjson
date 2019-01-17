@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { from } from 'rxjs';
 import { StudentsComponent } from './students/students.component';
 import { DisplayComponent } from './display/display.component';
+import { DisplaystudentDirective } from './displaystudent.directive';
 
 
 
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
     AppComponent,
     StudentsComponent,
     DisplayComponent,
+    DisplaystudentDirective,
     
     
   ],

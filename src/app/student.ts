@@ -1,6 +1,7 @@
 export class Student {
     eid: number;
-    name: string;
+    firstName: string;
+    lastName: string;
     sem: number;
     branch: string;
 }
