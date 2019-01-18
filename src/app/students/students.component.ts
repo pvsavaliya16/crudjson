@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Students,Student,Students1 } from '../student';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { StudentService } from '../student.service';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -12,14 +13,14 @@ export class StudentsComponent implements OnInit {
   student = {};
   
   student1: Student;
-  students1 = Students1;
+  students1;
   
 
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private _studentService: StudentService) { }
 
   ngOnInit() {
-    
+    this.students1 = this._studentService.getStudents();
   }
   onSubmit(studentform): void { 
     

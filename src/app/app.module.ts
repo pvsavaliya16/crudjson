@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Student } from './student';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { StudentService } from './student.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { from } from 'rxjs';
 import { StudentsComponent } from './students/students.component';
 import { DisplayComponent } from './display/display.component';
 import { DisplaystudentDirective } from './displaystudent.directive';
+import { DispComponent } from './disp/disp.component';
 
 
 
@@ -25,6 +25,7 @@ const appRoutes: Routes = [
     StudentsComponent,
     DisplayComponent,
     DisplaystudentDirective,
+    DispComponent,
     
     
   ],
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
     AppRoutingModule, 
     FormsModule
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

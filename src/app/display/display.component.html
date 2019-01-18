@@ -1,26 +1,25 @@
 <h2>All Students</h2>
-<table class="table table-striped table-bordered">
-  <tr>
-    <th>Name</th>
-    <th>Enrollment</th>
-    <th>Sem</th>
-    <th>Branch</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <tr *ngFor="let student of students">
-    <td>{{student.firstName + " " + student.lastName}}</td>
-    <td>{{student.eid}}</td>
-    <td>{{student.sem}}</td>
-    <td>{{student.branch}}</td>
-    <td>
+<div class="row">
+    <div class="col-md-2"><h3 style="text-align: center">Enrollment</h3></div>
+    <div class="col-md-2"><h3 style="text-align: center">Name</h3></div>
+    <div class="col-md-2"><h3 style="text-align: center">Sem</h3></div>
+    <div class="col-md-2"><h3 style="text-align: center">Branch</h3></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+</div>
+  <div *ngFor="let student of students" class="row">
+    <div class="col-md-8">
+      <app-disp [student]="student"></app-disp>
+    </div>
+    <div class="col-md-2">
       <button class="btn-dark btn" (click)="deleteStudent(student)">Delete</button>
-    </td>
-    <td>
+    </div>
+    <div class="col-md-2">
       <button class="btn btn-dark" (click)="updateStudent(student)">Edit</button>
-    </td>
-  </tr>
-</table>
+    </div>
+    
+  </div>
+
 <div *ngIf="editStudent">
   <form #updateForm="ngForm" (ngSubmit)="updStudent(updateForm)">
     

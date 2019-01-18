@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Students, Student, Students1 } from '../student';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-display',
@@ -8,13 +9,16 @@ import { Students, Student, Students1 } from '../student';
 })
 export class DisplayComponent implements OnInit {
 
-  students = Students1;
+  students;
   thisStudent: Student;
   editStudent: boolean = false;
-  constructor() { }
+  constructor(private _studentService:StudentService) { }
 
   ngOnInit() {
+    this.students = this._studentService.getStudents();
   }
+
+
   deleteStudent(student): void {
     this.editStudent = false;
     const index = this.students.indexOf(student);
@@ -22,10 +26,14 @@ export class DisplayComponent implements OnInit {
       this.students.splice(index, 1);
     }
   }
+
+
   updateStudent(student:Student) :void {
     this.editStudent = true;
     this.thisStudent = student;
   }
+
+
   updStudent(updateForm): void {
     this.thisStudent = null;
     this.editStudent = false;//
